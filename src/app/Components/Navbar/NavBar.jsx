@@ -19,10 +19,10 @@ const NavBar = () => {
             </li>
             <li>
               <Link
-                href="/Service"
-                className={pathname.startsWith("/Service") ? "font-bold" : ""}
+                href="/post"
+                className={pathname.startsWith("/post") ? "font-bold" : ""}
               >
-                Service
+                post
               </Link>
             </li>
             <li>
