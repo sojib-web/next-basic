@@ -13,7 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Awesome NextJs App 🚀",
+  title: {
+    default: "Awesome NextJs App",
+    template: "%s | Awesome NextJs App",
+  },
+  keywords: ["Next.js", "React", "JavaScript"],
   description: "A modern Next.js project with Tailwind and beautiful fonts.",
 };
 

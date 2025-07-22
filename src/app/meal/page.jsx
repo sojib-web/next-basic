@@ -1,5 +1,10 @@
 // app/meal/page.jsx
+import Link from "next/link";
 import MealsSearchInput from "./components/MealsSearchInput";
+export const metadata = {
+  title: "All Meals",
+  description: "Meals And MealDB .",
+};
 
 const MealsPage = async ({ searchParams }) => {
   const searchQuery = searchParams?.search || "";
@@ -43,6 +48,7 @@ const MealsPage = async ({ searchParams }) => {
               <h2 className="font-semibold text-lg text-purple-900">
                 Category : {meal.strCategory}
               </h2>
+              <Link href={`/meal/${meal.idMeal}`}>Details</Link>
             </div>
           ))
         ) : (

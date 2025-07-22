@@ -3,16 +3,29 @@ import React from "react";
 
 export const getSinglePost = async (id) => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
+    `https://jsonplaceholder.typicode.com/posts/${id}`,
+    { cache: "no-store" }
   );
-  const data = await response.json();
-  console.log("Fetched Post:", data);
-  return data;
+  return response.json();
 };
 
-const SinglePost = async ({ params }) => {
-  console.log("Params:", params); // { id: '7' }
+export async function generateMetadata({ params }) {
+  const id = (await params).id;
 
+  // fetch post information
+  const post = await getSinglePost(id);
+
+  return {
+    title: post.title,
+    description: post.body,
+  };
+}
+
+// export const metadata = {
+//   title: "Single post",
+//   description: "Loading JSON Placeholder posts using Server Components.",
+// };
+const SinglePost = async ({ params }) => {
   const post = await getSinglePost(params.id);
 
   return (

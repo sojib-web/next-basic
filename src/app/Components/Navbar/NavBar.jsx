@@ -27,10 +27,10 @@ const NavBar = () => {
             </li>
             <li>
               <Link
-                href="/About"
+                href="/meal"
                 className={pathname.startsWith("/About") ? "font-bold" : ""}
               >
-                About
+                Meal
               </Link>
             </li>
             <li>
