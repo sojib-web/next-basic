@@ -1,6 +1,7 @@
 // app/meal/page.jsx
 import Link from "next/link";
 import MealsSearchInput from "./components/MealsSearchInput";
+import Image from "next/image";
 export const metadata = {
   title: "All Meals",
   description: "Meals And MealDB .",
@@ -34,11 +35,14 @@ const MealsPage = async ({ searchParams }) => {
               key={meal.idMeal}
               className="bg-white p-4 rounded-xl shadow-md hover:scale-105 transition"
             >
-              <img
+              <Image
                 src={meal.strMealThumb}
                 alt={meal.strMeal}
-                className="rounded-lg mb-3"
+                width={300}
+                height={200}
+                className="rounded-lg mb-3 w-full object-cover"
               />
+
               <h2 className="font-semibold text-lg text-purple-900">
                 Meal: {meal.strMeal}
               </h2>

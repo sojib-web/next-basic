@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import NavBar from "./Components/Navbar/NavBar";
 
@@ -10,6 +10,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = {
@@ -25,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 text-gray-800`}
+        className={`${roboto.variable}  antialiased bg-gray-100 text-gray-800`}
       >
         <NavBar />
         <main className="min-h-[calc(100vh-100px)] px-4 md:px-8 py-6">
