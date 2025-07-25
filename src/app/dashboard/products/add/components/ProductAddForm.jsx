@@ -1,7 +1,11 @@
 "use client";
+import { postSingleData } from "@/app/actions/products/postSingleProducts";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const ProductAddForm = () => {
+  const { NEXT_PUBLIC_SERVER_ADDRESS } = process.env;
+  const router = useRouter();
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -12,17 +16,19 @@ const ProductAddForm = () => {
     const payload = { productName };
 
     try {
-      const res = await fetch("http://localhost:3000/api/items", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) throw new Error("Failed to submit");
+      // const res = await fetch(`${NEXT_PUBLIC_SERVER_ADDRESS}/api/items`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(payload),
+      // });
+      const res = await postSingleData(payload);
+      // if (!res.ok) throw new Error("Failed to submit");
 
       setMessage("Product added successfully!");
+      router.push("/products");
+      router.refresh();
       form.reset();
     } catch (error) {
       console.error(error);
